@@ -22,7 +22,7 @@ class DetailsPage extends StatelessWidget {
                 height: 230,
                 width: double.infinity,
                 fit: BoxFit.cover,
-                image: NetworkImage(dataModel.image),
+                image: NetworkImage(dataModel.image!),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 12.0),
@@ -36,7 +36,7 @@ class DetailsPage extends StatelessWidget {
                       children: [
                         Flexible(
                           child: Text(
-                            dataModel.title,
+                            dataModel.title!,
                             style: const TextStyle(
                               fontSize: 24,
                               fontWeight: FontWeight.bold,
@@ -55,7 +55,7 @@ class DetailsPage extends StatelessWidget {
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: Text(
-                              dataModel.worth,
+                              dataModel.worth!,
                               style: const TextStyle(
                                 fontSize: 22,
                                 fontWeight: FontWeight.bold,
@@ -68,7 +68,7 @@ class DetailsPage extends StatelessWidget {
                       height: 12,
                     ),
                     Text(
-                      "Available in: " + dataModel.platforms,
+                      "Available in: " + dataModel.platforms!,
                       style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w400,
@@ -85,7 +85,7 @@ class DetailsPage extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      dataModel.description,
+                      dataModel.description!,
                       style: const TextStyle(
                           // fontWeight: FontWeight.w,
                           ),
@@ -104,7 +104,7 @@ class DetailsPage extends StatelessWidget {
                       height: 4,
                     ),
                     Text(
-                      dataModel.instructions,
+                      dataModel.instructions!,
                       style: const TextStyle(),
                     ),
                     const SizedBox(
@@ -115,7 +115,7 @@ class DetailsPage extends StatelessWidget {
                         Flexible(
                           child: InkWell(
                             onTap: () {
-                              launch(dataModel.gamerpower_url);
+                              launch(dataModel.gamerpowerUrl!);
                             },
                             child: Container(
                               width: double.infinity,
@@ -141,7 +141,7 @@ class DetailsPage extends StatelessWidget {
                         Flexible(
                           child: InkWell(
                             onTap: () {
-                              launch(dataModel.open_giveaway_url);
+                              launch(dataModel.openGiveawayUrl!);
                             },
                             child: Container(
                               width: double.infinity,

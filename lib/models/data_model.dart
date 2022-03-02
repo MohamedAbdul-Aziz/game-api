@@ -1,33 +1,76 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+class DataModel {
+  int? id;
+  String? title;
+  String? worth;
+  String? thumbnail;
+  String? image;
+  String? description;
+  String? instructions;
+  String? openGiveawayUrl;
+  String? publishedDate;
+  String? type;
+  String? platforms;
+  String? endDate;
+  int? users;
+  String? status;
+  String? gamerpowerUrl;
+  String? openGiveaway;
 
-part 'data_model.freezed.dart';
-part 'data_model.g.dart';
+  DataModel(
+      {this.id,
+      this.title,
+      this.worth,
+      this.thumbnail,
+      this.image,
+      this.description,
+      this.instructions,
+      this.openGiveawayUrl,
+      this.publishedDate,
+      this.type,
+      this.platforms,
+      this.endDate,
+      this.users,
+      this.status,
+      this.gamerpowerUrl,
+      this.openGiveaway});
 
-@freezed
-class DataModel with _$DataModel {
-  factory DataModel({
-    required int id,
-    required String title,
-    required String worth,
-    required String thumbnail,
-    required String image,
-    required String description,
-    required String instructions,
-    required String open_giveaway_url,
-    required String published_date,
-    required String type,
-    required String platforms,
-    required String end_date,
-    required int users,
-    required String status,
-    required String gamerpower_url,
-  }) = _DataModel;
-  factory DataModel.fromJson(Map<String, dynamic> json) =>
-      _$DataModelFromJson(json);
+  DataModel.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    title = json['title'];
+    worth = json['worth'];
+    thumbnail = json['thumbnail'];
+    image = json['image'];
+    description = json['description'];
+    instructions = json['instructions'];
+    openGiveawayUrl = json['open_giveaway_url'];
+    publishedDate = json['published_date'];
+    type = json['type'];
+    platforms = json['platforms'];
+    endDate = json['end_date'];
+    users = json['users'];
+    status = json['status'];
+    gamerpowerUrl = json['gamerpower_url'];
+    openGiveaway = json['open_giveaway'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['title'] = this.title;
+    data['worth'] = this.worth;
+    data['thumbnail'] = this.thumbnail;
+    data['image'] = this.image;
+    data['description'] = this.description;
+    data['instructions'] = this.instructions;
+    data['open_giveaway_url'] = this.openGiveawayUrl;
+    data['published_date'] = this.publishedDate;
+    data['type'] = this.type;
+    data['platforms'] = this.platforms;
+    data['end_date'] = this.endDate;
+    data['users'] = this.users;
+    data['status'] = this.status;
+    data['gamerpower_url'] = this.gamerpowerUrl;
+    data['open_giveaway'] = this.openGiveaway;
+    return data;
+  }
 }
-
-
-
-// class Person with _$Person {
-//   factory Person({String? name, int? age}) = _Person;
-// }

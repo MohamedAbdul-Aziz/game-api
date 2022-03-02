@@ -1,10 +1,12 @@
 import 'package:auto_route/src/router/auto_router_x.dart';
 import 'package:bloc_api/bloc/game_data_bloc.dart';
 import 'package:bloc_api/models/data_model.dart';
-import 'package:bloc_api/routes/router.dart';
+import 'package:bloc_api/screens/details_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:glassmorphism/glassmorphism.dart';
+
+import '../bloc/game_data_state.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -14,7 +16,6 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       body: BlocBuilder<GameDataBloc, GameDataState>(
         builder: (context, state) {
-          // context.read<GameDataBloc>().add(GameDataLoading());
           if (state is GameDataInitialState) {
             context.read<GameDataBloc>().add(LoadGameDataEvent());
             return const CircularProgressIndicator();
@@ -44,7 +45,11 @@ class HomePage extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 8),
             child: InkWell(
               onTap: () {
-                context.router.push(DetailsRoute(dataModel: dataModel));
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => DetailsPage(dataModel: dataModel)),
+                );
               },
               child: SizedBox(
                 width: double.infinity,
@@ -56,7 +61,7 @@ class HomePage extends StatelessWidget {
                         height: 230,
                         width: MediaQuery.of(context).size.width / 1.05,
                         fit: BoxFit.cover,
-                        image: NetworkImage(dataModel.image),
+                        image: NetworkImage(dataModel.image!),
                       ),
                     ),
                     Positioned(
@@ -97,7 +102,7 @@ class HomePage extends StatelessWidget {
                               SizedBox(
                                 width: double.infinity,
                                 child: Text(
-                                  dataModel.title,
+                                  dataModel.title!,
                                   style: const TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold,
@@ -108,7 +113,7 @@ class HomePage extends StatelessWidget {
                                 height: 4,
                               ),
                               Text(
-                                "Platforms: " + dataModel.platforms,
+                                "Platforms: " + dataModel.platforms!,
                                 style: const TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w400,
